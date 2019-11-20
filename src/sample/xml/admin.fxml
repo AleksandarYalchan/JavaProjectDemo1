@@ -32,7 +32,7 @@
             <Insets left="200.0" />
          </padding>
       </Label>
-      <Label text="Please make a choise">
+      <Label text="Please make a choice">
          <font>
             <Font size="21.0" />
          </font>
