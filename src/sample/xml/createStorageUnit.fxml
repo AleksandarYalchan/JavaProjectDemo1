@@ -17,7 +17,7 @@
                     <children>
                         <Label text="Name:" />
                   <Region prefHeight="31.0" prefWidth="79.0" />
-                        <TextField />
+                        <TextField fx:id="nameStorage" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
@@ -27,7 +27,7 @@
                     <children>
                         <Label text="Address:" />
                   <Region prefHeight="31.0" prefWidth="67.0" />
-                        <TextField />
+                        <TextField fx:id="addressStorage" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -40,7 +40,7 @@
                         <Insets left="13.0" />
                      </padding></Label>
                   <Region prefHeight="31.0" prefWidth="91.0" />
-                        <TextField prefHeight="31.0" prefWidth="181.0" />
+                        <TextField fx:id="sizeStorage" prefHeight="31.0" prefWidth="181.0" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="7.0" right="20.0" top="10.0" />
@@ -54,7 +54,7 @@
                      </padding>
                   </Label>
                   <Region prefHeight="31.0" prefWidth="0.0" />
-                        <TextField />
+                        <TextField fx:id="climateStorage" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="7.0" right="20.0" top="10.0" />
@@ -67,7 +67,7 @@
                         <Insets left="5.0" />
                      </padding></Label>
                   <Region prefHeight="31.0" prefWidth="65.0" />
-                        <TextField />
+                        <TextField fx:id="categoryStorage" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="7.0" right="20.0" top="10.0" />
@@ -81,7 +81,7 @@
                      </padding>
                   </Label>
                   <Region prefHeight="31.0" prefWidth="58.0" />
-                          <TextField />
+                          <TextField fx:id="rentPriceStorage" />
                       </children>
                       <padding>
                           <Insets bottom="10.0" left="7.0" right="20.0" top="10.0" />
@@ -95,7 +95,7 @@
                      </padding>
                   </Label>
                   <Region prefHeight="31.0" prefWidth="51.0" />
-                          <TextField />
+                          <TextField fx:id="containingsStorage" />
                       </children>
                       <padding>
                           <Insets bottom="20.0" left="7.0" right="20.0" top="20.0" />
@@ -103,7 +103,7 @@
                   </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                     <children>
-                        <Button mnemonicParsing="false" text="Submit" />
+                        <Button mnemonicParsing="false" onAction="#createStorageUnit" text="Submit" />
                         <Button mnemonicParsing="false" text="Cancel" />
                     </children>
                     <padding>

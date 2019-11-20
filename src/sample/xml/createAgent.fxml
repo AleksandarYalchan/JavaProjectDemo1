@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.CreateAgentController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.CreateAgentController">
     <children>
         <TitledPane prefHeight="21.0" prefWidth="600.0" text="Create Agent" />
         <VBox prefHeight="200.0" prefWidth="100.0">
@@ -15,8 +15,17 @@
                 <Label text="Input Agents information" />
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                     <children>
+                        <Label text="Username: " />
+                        <TextField fx:id="userNameAgent" />
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
                         <Label text="First name:" />
-                        <TextField />
+                        <TextField fx:id="firstNameAgent" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -25,7 +34,7 @@
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                     <children>
                         <Label text="Last name:" />
-                        <TextField />
+                        <TextField fx:id="lastNameAgent" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -34,7 +43,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Label text="Charging fee:" />
-                  <TextField />
+                  <TextField fx:id="changingFeeAgent" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="7.0" right="20.0" top="20.0" />
@@ -42,7 +51,7 @@
             </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                     <children>
-                        <Button mnemonicParsing="false" text="Submit" />
+                        <Button mnemonicParsing="false" onAction="#createAgent" text="Submit" />
                         <Button mnemonicParsing="false" text="Clear" />
                     </children>
                     <padding>
