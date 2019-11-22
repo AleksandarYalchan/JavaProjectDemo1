@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="137.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.IncorrectUserNameController">
+   <children>
+      <TitledPane animated="false" prefHeight="31.0" prefWidth="567.0" text="Error">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </TitledPane>
+      <Label layoutX="202.0" layoutY="50.0" text="Incorrect username">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="234.0" layoutY="84.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="89.0" text="OK" />
+   </children>
+</AnchorPane>

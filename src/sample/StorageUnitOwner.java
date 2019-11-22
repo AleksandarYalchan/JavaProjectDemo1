@@ -10,13 +10,12 @@ public class StorageUnitOwner {
     @Id
     @Column(name = "id_owner")
     private int id_owner;
-    @Column(name="user_name")
-    private String userName;
     @Column(name="first_name")
     private String firstName;
     @Column(name="last_name")
     private String lastName;
-
+    @Column(name="user_name")
+    private String userName;
     public StorageUnitOwner() {
     }
 
@@ -56,7 +55,7 @@ public class StorageUnitOwner {
                 '}';
     }
     public void CreateStorageUnit(StorageUnit unit) {
-
+            unit.setOwned_By(this);
         Admin.CreateStorageUnitUserOrUnit(unit);
     }
 }

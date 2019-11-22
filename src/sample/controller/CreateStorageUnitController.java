@@ -41,6 +41,7 @@ public class CreateStorageUnitController {
         unit.setContainings(containings);
         unit.setSize(size);
         unit.setRent_Price(price);
+
         (new StorageUnitOwner()).CreateStorageUnit(unit);
         nameStorage.clear();
         addressStorage.clear();

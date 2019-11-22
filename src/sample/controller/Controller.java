@@ -14,32 +14,35 @@ public class Controller {
 
 
     public void adminButtonClicked(ActionEvent event) throws IOException {
-
-        //to do validation for the username
-        Parent logInParent = FXMLLoader.load(getClass().getResource("../xml/admin.fxml"));
-        Scene logInScene = new Scene(logInParent);
-        Stage logInStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        logInStage.setScene(logInScene);
-        logInStage.show();
+        Parent logInParent;
+        Stage newWin=new Stage();
+        Scene newScene;
+        logInParent = FXMLLoader.load(getClass().getResource("../xml/logInAsAdmin.fxml"));
+        newScene=new Scene(logInParent);
+        newWin.setScene(newScene);
+        newWin.show();
     }
 
 
     public void ownerButtonClicked(ActionEvent event) throws IOException {
-
-        Parent logInParent = FXMLLoader.load(getClass().getResource("../xml/owner.fxml"));
-        Scene logInScene = new Scene(logInParent);
-        Stage logInStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        logInStage.setScene(logInScene);
-        logInStage.show();
+        Parent logInParent;
+        Stage newWin=new Stage();
+        Scene newScene;
+        logInParent = FXMLLoader.load(getClass().getResource("../xml/logInAsOwner.fxml"));
+        newScene=new Scene(logInParent);
+        newWin.setScene(newScene);
+        newWin.show();
     }
 
     public void agentButtonClicked(ActionEvent event) throws IOException {
 
-        Parent logInParent = FXMLLoader.load(getClass().getResource("../xml/agent.fxml"));
-        Scene logInScene = new Scene(logInParent);
-        Stage logInStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        logInStage.setScene(logInScene);
-        logInStage.show();
+        Parent logInParent;
+        Stage newWin=new Stage();
+        Scene newScene;
+        logInParent = FXMLLoader.load(getClass().getResource("../xml/logInAsAgent.fxml"));
+        newScene=new Scene(logInParent);
+        newWin.setScene(newScene);
+        newWin.show();
     }
 }
 
