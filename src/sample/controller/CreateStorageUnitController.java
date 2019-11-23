@@ -7,6 +7,8 @@ import sample.StorageUnit;
 import sample.StorageUnitOwner;
 
 public class CreateStorageUnitController {
+
+    private StorageUnitOwner storageUnitOwner=new StorageUnitOwner();
     @FXML
     TextField nameStorage = new TextField();
     @FXML
@@ -41,8 +43,11 @@ public class CreateStorageUnitController {
         unit.setContainings(containings);
         unit.setSize(size);
         unit.setRent_Price(price);
+        unit.setOwned_By(storageUnitOwner);
 
-        (new StorageUnitOwner()).CreateStorageUnit(unit);
+        Admin.CreateStorageUnitUserOrUnit(unit);
+
+
         nameStorage.clear();
         addressStorage.clear();
         sizeStorage.clear();
@@ -50,5 +55,10 @@ public class CreateStorageUnitController {
         categoryStorage.clear();
         rentPriceStorage.clear();
         containingsStorage.clear();
+    }
+
+    public void srorageUnitOwnerName(StorageUnitOwner owner){
+        this.storageUnitOwner=owner;
+        System.out.println(storageUnitOwner.getFirstName()+"   "+storageUnitOwner.getLastName()+"   "+storageUnitOwner.getUserName()+"    "+storageUnitOwner.getId_owner());
     }
 }

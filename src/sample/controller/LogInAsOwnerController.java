@@ -22,6 +22,7 @@ public class LogInAsOwnerController {
     @FXML
     TextField userNameTextFieldOwner = new TextField();
 
+    int id_owner;
     public void logInOwner() throws IOException {
         boolean flagIsExist = false;
         String userNameExist = "none";
@@ -37,6 +38,8 @@ public class LogInAsOwnerController {
                 flagIsExist = true;
                 userNameExist = storageUnitOwnerList.get(i).getUserName();
                 owner = storageUnitOwnerList.get(i);
+            id_owner=storageUnitOwnerList.get(i).getId_owner();
+                //break;
             }
         }
         t.commit();
@@ -62,14 +65,14 @@ public class LogInAsOwnerController {
 //
 //    }
 //
-       // StorageUnitOwner owner = new StorageUnitOwner();
+        // StorageUnitOwner owner = new StorageUnitOwner();
         //owner.setUserName(userNameTextFieldOwner.getText());
         if(flagIsExist==true) {
             Stage newWin = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/owner.fxml"));
             Parent logInParent = loader.load();
             OwnerController ownerController = loader.<OwnerController>getController();
-            ownerController.fetchOwnerFromLogInForum(owner);
+            ownerController.fetchOwnerFromLogInForum(owner,id_owner);
 
 
             Scene newScene = new Scene(logInParent);
@@ -82,16 +85,16 @@ public class LogInAsOwnerController {
         }
         else{
             Stage newWin = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/incorrectUserName.fxml"));
-        Parent logInParent = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/incorrectUserName.fxml"));
+            Parent logInParent = loader.load();
 
 
-        Scene newScene = new Scene(logInParent);
-        //logInParent = loader.load(getClass().getResource("../xml/owner.fxml"));
+            Scene newScene = new Scene(logInParent);
+            //logInParent = loader.load(getClass().getResource("../xml/owner.fxml"));
 //        newScene = new Scene(logInParent);
-        newWin.setScene(newScene);
+            newWin.setScene(newScene);
 
 
-        newWin.show();}
+            newWin.show();}
     }
 }

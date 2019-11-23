@@ -17,7 +17,8 @@ public class Controller {
         Parent logInParent;
         Stage newWin=new Stage();
         Scene newScene;
-        logInParent = FXMLLoader.load(getClass().getResource("../xml/logInAsAdmin.fxml"));
+        //                                                     ../xml/logInAsAdmin.fxml
+        logInParent = FXMLLoader.load(getClass().getResource("../xml/admin.fxml"));
         newScene=new Scene(logInParent);
         newWin.setScene(newScene);
         newWin.show();

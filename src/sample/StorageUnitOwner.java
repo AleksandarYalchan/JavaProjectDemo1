@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "owners")
 public class StorageUnitOwner {
+    //TODO make a properti Collection<StorageUnit>
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_owner")
