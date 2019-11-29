@@ -45,7 +45,7 @@ public class CreateStorageUnitController {
         unit.setRent_Price(price);
         unit.setOwned_By(storageUnitOwner);
 
-        Admin.CreateStorageUnitUserOrUnit(unit);
+        storageUnitOwner.CreateStorageUnit(unit);
 
 
         nameStorage.clear();

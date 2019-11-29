@@ -41,7 +41,7 @@ public class ListAllAgentsController implements Initializable {
         factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
-        Query query = session.createQuery("from StorageUnitAgent ");
+        Query query = session.createQuery("from StorageUnitAgent");
         List<StorageUnitAgent> storageUnitAgentList = query.list();
         for (int i = 0; i < storageUnitAgentList.size(); i++) {
             // System.out.println((i + 1) + ". " + storageUnitAgentList.get(i).toString());
@@ -51,6 +51,7 @@ public class ListAllAgentsController implements Initializable {
         t.commit();
         session.close();
         return agentsOList;
+
     }
 
     @Override

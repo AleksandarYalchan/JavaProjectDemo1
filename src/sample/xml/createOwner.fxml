@@ -15,7 +15,7 @@
             <Label text="Input Owner's information" />
              <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                  <children>
-                     <Label text="Last name:" />
+                     <Label text="UserName:" />
                      <TextField fx:id="userName" />
                  </children>
                  <padding>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.HireAgentController">
+    <children>
+        <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="1200.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView fx:id="tableViewAgents" layoutX="27.0" layoutY="164.0" prefHeight="200.0" prefWidth="480.0">
+            <columns>
+                <TableColumn fx:id="firstNameAgentColumn" prefWidth="120.0" text="First Name" />
+                <TableColumn fx:id="lastNameAgentColumn" prefWidth="120.0" text="Last Name" />
+                <TableColumn fx:id="chargingFeeAgentColumn" prefWidth="120.0" text="Charging Fee" />
+                <TableColumn fx:id="ratingAgentColumn" prefWidth="120.0" text="Rating" />
+            </columns>
+        </TableView>
+      <Button fx:id="selectAgentButton" layoutX="208.0" layoutY="406.0" mnemonicParsing="false" onAction="#selectAgent" text="SELECT AGENT" />
+      <TableView fx:id="tableViewUnits" layoutX="531.0" layoutY="164.0" prefHeight="200.0" prefWidth="655.0">
+        <columns>
+          <TableColumn fx:id="nameStorageUnitColumn" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="addressStorageUnitColumn" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="sizeStorageUnitColumn" prefWidth="75.0" text="Size" />
+            <TableColumn fx:id="categoryStorageUnitColumn" prefWidth="75.0" text="Category" />
+            <TableColumn fx:id="rentPriceStorageUnitColumn" prefWidth="114.0" text="Rent Price" />
+            <TableColumn fx:id="climateStorageUnitColumn" prefWidth="146.0" text="Climatic Conditions" />
+            <TableColumn fx:id="containingsStorageUnitColumn" minWidth="0.0" prefWidth="94.0" text="Containings" />
+        </columns>
+      </TableView>
+      <Button fx:id="selectUnitButton" layoutX="725.0" layoutY="406.0" mnemonicParsing="false" onAction="#selectStorageUnit" text="SELECT UNIT" />
+      <Button layoutX="994.0" layoutY="710.0" mnemonicParsing="false" text="CANCEL" />
+    </children>
+</AnchorPane>

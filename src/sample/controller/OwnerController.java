@@ -52,8 +52,13 @@ public class OwnerController implements Initializable {
             createStorageUnitController.srorageUnitOwnerName(owner);
         }
         else if (hireAgent.isSelected()){
-            loader=new FXMLLoader(getClass().getResource("../xml/hireAgent.fxml"));
-            logInParent = loader.load();}
+            loader=new FXMLLoader(getClass().getResource("../xml/hireAgents.fxml"));
+            logInParent = loader.load();
+        HireAgentController hireAgentController=loader.getController();
+        hireAgentController.initWindow(owner);
+
+        }
+
         else {
          loader=new FXMLLoader(getClass().getResource("../xml/listAllStorageUnitByOwner.fxml"));
             logInParent = loader.load();

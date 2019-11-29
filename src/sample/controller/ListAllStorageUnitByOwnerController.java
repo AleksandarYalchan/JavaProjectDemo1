@@ -50,7 +50,7 @@ public class ListAllStorageUnitByOwnerController {
 
     public ObservableList<StorageUnit> fetchStorageUnitOwner() {
 
-        System.out.println("in list storage class fetchStorageUnitOwner() method:"+storageUnitOwner.getFirstName() + "   " + storageUnitOwner.getLastName() + "   " + storageUnitOwner.getUserName() + "    " + storageUnitOwner.getId_owner());
+        //System.out.println("in list storage class fetchStorageUnitOwner() method:"+storageUnitOwner.getFirstName() + "   " + storageUnitOwner.getLastName() + "   " + storageUnitOwner.getUserName() + "    " + storageUnitOwner.getId_owner());
         ObservableList<StorageUnit> storageUnitOList = FXCollections.observableArrayList();
 
         SessionFactory factory;

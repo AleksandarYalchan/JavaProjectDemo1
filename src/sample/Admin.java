@@ -72,9 +72,9 @@ public class Admin {
 
                      try {
             SessionFactory factory;
-            factory = new Configuration().configure().buildSessionFactory();
-            Session session = factory.openSession();
-            Transaction t = session.beginTransaction();
+                factory = new Configuration().configure().buildSessionFactory();
+                Session session = factory.openSession();
+                Transaction t = session.beginTransaction();
             session.save(newAgent);
             t.commit();
             session.close();

@@ -6,54 +6,58 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name="units")
+@Table(name = "units")
 public class StorageUnit {
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name="unit_id")
+    @Column(name = "unit_id")
     private int unit_id;
     //boolean status;
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="unit_agent_mapping",joinColumns=@JoinColumn(name="unit_id"),
-            inverseJoinColumns=@JoinColumn(name="agent_id"))
-    @Column(name="storage_unit_agent")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "unit_agent_mapping", joinColumns = @JoinColumn(name = "unit_id"),
+            inverseJoinColumns = @JoinColumn(name = "agent_id"))
+    @Column(name = "storage_unit_agent")
     private Collection<StorageUnitAgent> Contracted_By = new ArrayList<>();
 
-    @Column(name="name_storage_unit")
+    @Column(name = "name_storage_unit")
     private String Name;
 
-    @Column(name="address")
+    @Column(name = "address")
     private String Address;
 
-    @Column(name="size")
+    @Column(name = "size")
     private int Size;
 
     @Column(name = "category")
     private String Category;
 
-    @Column(name="climate")
+    @Column(name = "climate")
     private String Climatic_Conditions;
 
-    @Column(name="containings")
+    @Column(name = "containings")
     private String Containings;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="owner_id")
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner_id")
     StorageUnitOwner Owned_By;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="tenant_id")
-    StorageUnitTenant Current_Tenant;
-
-    @Column(name="rent_prize")
+    @Column(name = "rent_prize")
     private double Rent_Price;
 
-    @Column(name="date_from")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tenant_id")
+    StorageUnitTenant Current_Tenant;
+//
+//    @Column(name = "status")
+//    private boolean isRented;
+
+
+    @Column(name = "date_from")
     private Date Rented_From;
 
-    @Column(name="date_until")
+    @Column(name = "date_until")
     private Date Rented_Until;
+
 
     public StorageUnit() {
     }
@@ -159,22 +163,30 @@ public class StorageUnit {
         Rented_Until = rented_Until;
     }
 
+//    public boolean isRented() {
+//        return isRented;
+//    }
+//
+//    public void setRented(boolean rented) {
+//        isRented = rented;
+//    }
+
     @Override
     public String toString() {
         return "StorageUnit{" +
-                "unit_id=" + unit_id +
-                ", Owned_By=" + Owned_By +
-                ", Contracted_By=" + Contracted_By +
+//                "unit_id=" + unit_id +
+//                ", Owned_By=" + Owned_By +
+//                ", Contracted_By=" + Contracted_By +
                 ", Name='" + Name + '\'' +
                 ", Address='" + Address + '\'' +
                 ", Size=" + Size +
                 ", Category='" + Category + '\'' +
                 ", Climatic_Conditions='" + Climatic_Conditions + '\'' +
                 ", Containings='" + Containings + '\'' +
-                ", Current_Tenant=" + Current_Tenant +
+//                ", Current_Tenant=" + Current_Tenant +
                 ", Rent_Price=" + Rent_Price +
-                ", Rented_From=" + Rented_From +
-                ", Rented_Until=" + Rented_Until +
+//                ", Rented_From=" + Rented_From +
+//                ", Rented_Until=" + Rented_Until +
                 '}';
     }
 }
