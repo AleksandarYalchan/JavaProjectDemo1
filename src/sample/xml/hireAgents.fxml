@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.HireAgentController">
+<AnchorPane prefHeight="800.0" prefWidth="1265.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.HireAgentController">
     <children>
-        <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="1200.0">
+        <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="1265.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
@@ -36,7 +36,7 @@
             </columns>
         </TableView>
       <Button fx:id="selectAgentButton" layoutX="208.0" layoutY="406.0" mnemonicParsing="false" onAction="#selectAgent" text="SELECT AGENT" />
-      <TableView fx:id="tableViewUnits" layoutX="531.0" layoutY="164.0" prefHeight="200.0" prefWidth="655.0">
+      <TableView fx:id="tableViewUnits" layoutX="596.0" layoutY="164.0" prefHeight="200.0" prefWidth="655.0">
         <columns>
           <TableColumn fx:id="nameStorageUnitColumn" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="addressStorageUnitColumn" prefWidth="75.0" text="Address" />
@@ -48,6 +48,7 @@
         </columns>
       </TableView>
       <Button fx:id="selectUnitButton" layoutX="725.0" layoutY="406.0" mnemonicParsing="false" onAction="#selectStorageUnit" text="SELECT UNIT" />
-      <Button layoutX="994.0" layoutY="710.0" mnemonicParsing="false" text="CANCEL" />
+      <Button layoutX="994.0" layoutY="710.0" mnemonicParsing="false" onAction="#closeButtonClicked" text="CANCEL" />
+      <Button layoutX="515.0" layoutY="264.0" mnemonicParsing="false" onAction="#addAgentToStorageUnit" text="Add To" />
     </children>
 </AnchorPane>

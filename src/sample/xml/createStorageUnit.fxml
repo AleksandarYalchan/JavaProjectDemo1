@@ -104,7 +104,7 @@
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                     <children>
                         <Button mnemonicParsing="false" onAction="#createStorageUnit" text="Submit" />
-                        <Button mnemonicParsing="false" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#cancelButtonClicked" text="Cancel" />
                     </children>
                     <padding>
                         <Insets left="390.0" top="72.0" />

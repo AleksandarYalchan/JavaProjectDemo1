@@ -51,7 +51,6 @@ public class ListAllAgentsController implements Initializable {
         t.commit();
         session.close();
         return agentsOList;
-
     }
 
     @Override

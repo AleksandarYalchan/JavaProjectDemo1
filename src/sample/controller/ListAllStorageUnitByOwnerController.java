@@ -2,29 +2,25 @@ package sample.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import sample.StorageUnit;
-import sample.StorageUnitAgent;
 import sample.StorageUnitOwner;
 import sample.StorageUnitTenant;
-
-import java.net.URL;
 import java.util.Date;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class ListAllStorageUnitByOwnerController {
-
-    private StorageUnitOwner storageUnitOwner = new StorageUnitOwner();
     @FXML
     private TableView<StorageUnit> tableView;
     @FXML
@@ -48,7 +44,7 @@ public class ListAllStorageUnitByOwnerController {
     @FXML
     private TableColumn<StorageUnit, Date> dateUntilSTorageUnitColumn;
 
-    public ObservableList<StorageUnit> fetchStorageUnitOwner() {
+    public ObservableList<StorageUnit> getListStorageUnitsByOwner(  StorageUnitOwner owner) {
 
         //System.out.println("in list storage class fetchStorageUnitOwner() method:"+storageUnitOwner.getFirstName() + "   " + storageUnitOwner.getLastName() + "   " + storageUnitOwner.getUserName() + "    " + storageUnitOwner.getId_owner());
         ObservableList<StorageUnit> storageUnitOList = FXCollections.observableArrayList();
@@ -61,7 +57,7 @@ public class ListAllStorageUnitByOwnerController {
         List<StorageUnit> storageUnitList = query.list();
         for (int i = 0; i < storageUnitList.size(); i++) {
             // System.out.println((i + 1) + ". " + storageUnitAgentList.get(i).toString());
-            if (storageUnitList.get(i).getOwned_By().getId_owner() == storageUnitOwner.getId_owner())
+            if (storageUnitList.get(i).getOwned_By().getId_owner() == owner.getId_owner())
                 storageUnitOList.add(storageUnitList.get(i));
 
         }
@@ -71,7 +67,7 @@ public class ListAllStorageUnitByOwnerController {
     }
 
 
-    public void init(){
+    public void initTable( StorageUnitOwner owner){
         nameStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         addressStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Address"));
         sizeStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Size"));
@@ -82,12 +78,17 @@ public class ListAllStorageUnitByOwnerController {
         tenantStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Current_Tenant"));
                 dateFromStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Rented_From"));
         dateUntilSTorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Rented_Until"));
-        tableView.setItems(fetchStorageUnitOwner());
+        tableView.setItems(getListStorageUnitsByOwner(owner));
     }
 
-    public void srorageUnitOwnerName(StorageUnitOwner owner) {
-        this.storageUnitOwner = owner;
-        System.out.println("in list storage class srorageUnitOwnerName(StorageUnitOwner owner)  method: "+storageUnitOwner.getFirstName() + "   " + storageUnitOwner.getLastName() + "   " + storageUnitOwner.getUserName() + "    " + storageUnitOwner.getId_owner());
-       init();
+    public void setStorageUnitOwnerName(StorageUnitOwner owner) {
+        System.out.println("in list storage class srorageUnitOwnerName(StorageUnitOwner owner)  method: "+owner.getFirstName() + "   " + owner.getLastName() + "   " + owner.getUserName() + "    " + owner.getId_owner());
+       initTable(owner);
+    }
+
+    public void closeButtonClicked(ActionEvent event){
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
     }
 }

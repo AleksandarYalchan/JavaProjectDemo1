@@ -2,7 +2,6 @@ package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -10,17 +9,15 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.StorageUnitOwner;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 //!!!!! pri iterrirane na bazadata ot danni Ne trabva da imash NULL pole inache hvarla NULL_POINTER_EXEPTION
-public class OwnerController implements Initializable {
+public class OwnerController{
     @FXML
     private Label ownerUserNameLabel=new Label();
 
-    int idOwner;
+   // int idOwner;
 
     private StorageUnitOwner owner=new StorageUnitOwner();
     @FXML
@@ -63,7 +60,7 @@ public class OwnerController implements Initializable {
          loader=new FXMLLoader(getClass().getResource("../xml/listAllStorageUnitByOwner.fxml"));
             logInParent = loader.load();
             ListAllStorageUnitByOwnerController listAllStorageUnitByOwnerController=loader.getController();
-            listAllStorageUnitByOwnerController.srorageUnitOwnerName(owner);
+            listAllStorageUnitByOwnerController.setStorageUnitOwnerName(owner);
 
         }
         newScene = new Scene(logInParent);
@@ -72,11 +69,13 @@ public class OwnerController implements Initializable {
 
     }
 
-    public void fetchOwnerFromLogInForum(StorageUnitOwner sendOwner,int id_owner){
+    public void fetchOwnerFromLogInForum(StorageUnitOwner sendOwner/*,int id_owner*/){
         //Owner
-        idOwner=id_owner;
+        //idOwner=id_owner;
         owner=sendOwner;
         ownerUserNameLabel.setText(owner.getUserName());
+
+        //TODO delete system.out after finish the lesson
         System.out.println(
                 ownerUserNameLabel.getText()
                         +"    \n  "+owner.getId_owner()
@@ -86,11 +85,5 @@ public class OwnerController implements Initializable {
 
 
         //
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

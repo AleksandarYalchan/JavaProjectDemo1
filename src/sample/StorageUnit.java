@@ -13,10 +13,9 @@ public class StorageUnit {
     @Column(name = "unit_id")
     private int unit_id;
     //boolean status;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "unit_agent_mapping", joinColumns = @JoinColumn(name = "unit_id"),
             inverseJoinColumns = @JoinColumn(name = "agent_id"))
-    @Column(name = "storage_unit_agent")
     private Collection<StorageUnitAgent> Contracted_By = new ArrayList<>();
 
     @Column(name = "name_storage_unit")
@@ -170,6 +169,10 @@ public class StorageUnit {
 //    public void setRented(boolean rented) {
 //        isRented = rented;
 //    }
+
+    public void setContractor(StorageUnitAgent Agent) {
+        Contracted_By.add(Agent);
+    }
 
     @Override
     public String toString() {

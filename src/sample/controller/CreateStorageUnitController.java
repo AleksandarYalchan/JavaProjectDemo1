@@ -1,8 +1,10 @@
 package sample.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import sample.Admin;
+import javafx.stage.Stage;
 import sample.StorageUnit;
 import sample.StorageUnitOwner;
 
@@ -59,6 +61,12 @@ public class CreateStorageUnitController {
 
     public void srorageUnitOwnerName(StorageUnitOwner owner){
         this.storageUnitOwner=owner;
+        //TODO delete sout
         System.out.println(storageUnitOwner.getFirstName()+"   "+storageUnitOwner.getLastName()+"   "+storageUnitOwner.getUserName()+"    "+storageUnitOwner.getId_owner());
+    }
+
+    public void cancelButtonClicked(ActionEvent event){
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
     }
 }

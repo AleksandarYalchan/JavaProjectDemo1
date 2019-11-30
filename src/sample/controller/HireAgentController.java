@@ -1,12 +1,12 @@
 package sample.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,14 +15,14 @@ import org.hibernate.query.Query;
 import sample.StorageUnit;
 import sample.StorageUnitAgent;
 import sample.StorageUnitOwner;
-import sample.StorageUnitTenant;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
+//TODO every time when you want to hire agent, instead showing all agents just show all agents without
+// contract, and every time when user choose a agent when add button is clicked, the agent have to disappear
+// from table
 public class HireAgentController {
+
+    private int idStorageUnit;
+
 
     public ListAllAgentsController listAllAgentsController=new ListAllAgentsController();
     private ListAllStorageUnitByOwnerController listStorageUnit=new ListAllStorageUnitByOwnerController();
@@ -56,53 +56,6 @@ public class HireAgentController {
     private TableColumn<StorageUnit, String> climateStorageUnitColumn;
     @FXML
     private TableColumn<StorageUnit, String> containingsStorageUnitColumn;
-//    @FXML
-//    private TableColumn<StorageUnit, StorageUnitTenant> tenantStorageUnitColumn;
-//    @FXML
-//    private TableColumn<StorageUnit, Date> dateFromStorageUnitColumn;
-//    @FXML
-//    private TableColumn<StorageUnit, Date> dateUntilSTorageUnitColumn;
-
-
-    public ObservableList<StorageUnitAgent> fetchAgents() {
-
-        ObservableList<StorageUnitAgent> agentsOList = FXCollections.observableArrayList();
-
-        SessionFactory factory;
-        factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
-        Transaction t = session.beginTransaction();
-        Query query = session.createQuery("from StorageUnitAgent");
-        List<StorageUnitAgent> storageUnitAgentList2 = query.list();
-        for (int i = 0; i < storageUnitAgentList2.size(); i++) {
-             System.out.println((i + 1) + ". " + storageUnitAgentList2.get(i).toString());
-            agentsOList.add(storageUnitAgentList2.get(i));
-
-        }
-        t.commit();
-        session.close();
-        return agentsOList;
-    }
-
-    public ObservableList<StorageUnit> fetchStorageUnits(){
-        ObservableList<StorageUnit> storageUnitOList = FXCollections.observableArrayList();
-
-        SessionFactory factory;
-        factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
-        Transaction t = session.beginTransaction();
-        Query query = session.createQuery("from StorageUnit ");
-        List<StorageUnit> storageUnitList = query.list();
-        for (int i = 0; i < storageUnitList.size(); i++) {
-            // System.out.println((i + 1) + ". " + storageUnitAgentList.get(i).toString());
-            if (storageUnitList.get(i).getOwned_By().getId_owner() == storageUnitOwner.getId_owner())
-                storageUnitOList.add(storageUnitList.get(i));
-
-        }
-        t.commit();
-        session.close();
-        return storageUnitOList;
-    }
     public void loadTables() {
 
         firstNameAgentColumn.setCellValueFactory(new PropertyValueFactory<>("First_Name"));
@@ -118,8 +71,8 @@ public class HireAgentController {
         climateStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Climatic_Conditions"));
         containingsStorageUnitColumn.setCellValueFactory(new PropertyValueFactory<>("Containings"));
 
-        tableViewUnits.setItems(fetchStorageUnits());
-        tableViewAgents.setItems(fetchAgents());
+        tableViewUnits.setItems(listStorageUnit.getListStorageUnitsByOwner(storageUnitOwner));
+        tableViewAgents.setItems(listAllAgentsController.fetchAgents());
     }
 
     public void initWindow(StorageUnitOwner owner){
@@ -132,13 +85,38 @@ public class HireAgentController {
         int index =tableViewAgents.getSelectionModel().getSelectedIndex();
         StorageUnitAgent agent=tableViewAgents.getItems().get(index);
         System.out.println(agent);
+        //System.out.println(e.getTarget().getClass().toString());
         return agent;
     }
     public StorageUnit selectStorageUnit(){
         int index =tableViewUnits.getSelectionModel().getSelectedIndex();
-        StorageUnit unit=tableViewUnits.getItems().get(index);
+        StorageUnit  unit=tableViewUnits.getItems().get(index);
+
         System.out.println(unit);
         return unit;
     }
+
+    public void addAgentToStorageUnit(){
+        //idStorageUnit=selectStorageUnit().getUnit_id();
+        SessionFactory factory;
+        factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction t = session.beginTransaction();
+        //Query query = session.createQuery("from StorageUnit s where s.id= :idStorageUnit ");
+        //StorageUnit unit=(StorageUnit) query.getSingleResult();
+         StorageUnit unit=selectStorageUnit();
+         StorageUnitAgent agent=selectAgent();
+        unit.setContractor(agent);
+        session.update(unit);
+        t.commit();
+        session.close();
+    }
+
+    public  void closeButtonClicked(ActionEvent event){
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
+
+
 
 }

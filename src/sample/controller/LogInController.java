@@ -16,7 +16,6 @@ import org.hibernate.query.Query;
 import sample.Admin;
 import sample.StorageUnitAgent;
 import sample.StorageUnitOwner;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -24,23 +23,29 @@ import java.util.List;
 public class LogInController {
 
     @FXML
-    private TextField userNameField=new TextField();
+    private TextField userNameField = new TextField();
 
-    private boolean isAgentLogin =false;
-    private boolean isAdminLogin=false;
-    private boolean isOwnerLogin =false;
+    private boolean isAgentLogin = false;
+    private boolean isAdminLogin = false;
+    private boolean isOwnerLogin = false;
 
-    public void logInAsAgent(Query query) throws IOException {
+    StorageUnitOwner owner = new StorageUnitOwner();
+    StorageUnitAgent agent=new StorageUnitAgent();
+    Admin admin=new Admin();
+
+    public void logInAsAgent(Query query) {
 
         List<StorageUnitAgent> storageUnitAgentList = query.list();
         for (int i = 0; i < storageUnitAgentList.size(); i++) {
             if (storageUnitAgentList.get(i).getUser_Name().equals(userNameField.getText())) {
                 isAgentLogin = true;
+                agent=storageUnitAgentList.get(i);
+                //break;
             }
         }
     }
 
-    public void logInAsAdmin(Query query) throws IOException {
+    public void logInAsAdmin(Query query) {
 
         List<Admin> storageUnitAdminList = query.list();
         for (int i = 0; i < storageUnitAdminList.size(); i++) {
@@ -50,18 +55,20 @@ public class LogInController {
         }
     }
 
-    public void logInAsOwner(Query query) throws IOException {
+    public void logInAsOwner(Query query) {
 
         List<StorageUnitOwner> storageUnitOwnerList = query.list();
         for (int i = 0; i < storageUnitOwnerList.size(); i++) {
             if (storageUnitOwnerList.get(i).getUserName().equals(userNameField.getText())) {
                 isOwnerLogin = true;
+                owner = storageUnitOwnerList.get(i);
+                //break;
             }
         }
     }
 
     public void logInButtonClicked(ActionEvent event) throws IOException {
-        Stage currentStage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         SessionFactory factory;
         factory = new Configuration().configure().buildSessionFactory();
@@ -82,36 +89,35 @@ public class LogInController {
         Parent logInParent;
         Stage newWin = new Stage();
         Scene newScene;
-        if (isAgentLogin){
+        if (isAgentLogin) {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/agent.fxml"));
-           logInParent=loader.load();
+            logInParent = loader.load();
 
+            AgentController agentController=loader.getController();
+            agentController.fetchAgentFromLogInForm(agent);
             newScene = new Scene(logInParent);
             newWin.setScene(newScene);
             newWin.show();
             currentStage.close();
-        }
-        else if(isOwnerLogin){
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("../xml/owner.fxml"));
+        } else if (isOwnerLogin) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/owner.fxml"));
             logInParent = loader.load();
             OwnerController ownerController = loader.<OwnerController>getController();
-            //ownerController.fetchOwnerFromLogInForum(owner,id_owner);
+            ownerController.fetchOwnerFromLogInForum(owner);
             newScene = new Scene(logInParent);
             newWin.setScene(newScene);
             newWin.show();
             currentStage.close();
 
-        }
-        else if(isAdminLogin){
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("../xml/admin.fxml"));
+        } else if (isAdminLogin) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/admin.fxml"));
             logInParent = loader.load();
-        newScene = new Scene(logInParent);
-        newWin.setScene(newScene);
-        newWin.show();
-        currentStage.close();
-        }
-        else{
+            newScene = new Scene(logInParent);
+            newWin.setScene(newScene);
+            newWin.show();
+            currentStage.close();
+        } else {
             logInParent = FXMLLoader.load(getClass().getResource("../xml/incorrectUserName.fxml"));
             newScene = new Scene(logInParent);
             newWin.setScene(newScene);
@@ -119,8 +125,8 @@ public class LogInController {
         }
     }
 
-    public void cancelButtonClicked(ActionEvent event){
-        Stage currentStage = (Stage)((Node) event.getSource()).getScene().getWindow();
+    public void cancelButtonClicked(ActionEvent event) {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
     }
 }

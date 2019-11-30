@@ -24,14 +24,23 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <Label alignment="CENTER" text="Welcome Agent" textAlignment="CENTER">
-            <font>
-                <Font size="34.0" />
-            </font>
-            <padding>
-                <Insets left="200.0" />
-            </padding>
-        </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Label alignment="CENTER" prefHeight="50.0" prefWidth="490.0" text="Welcome Agent" textAlignment="CENTER">
+                  <font>
+                      <Font size="34.0" />
+                  </font>
+              </Label>
+            <Label fx:id="agentNameLabel" text="Label">
+               <font>
+                  <Font size="34.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-110.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
         <Label text="Please make a choise">
             <font>
                 <Font size="21.0" />

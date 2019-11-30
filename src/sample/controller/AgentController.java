@@ -4,13 +4,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import sample.StorageUnitAgent;
 
 import java.io.IOException;
 
 public class AgentController {
+
+    private StorageUnitAgent agent=new StorageUnitAgent();
+    @FXML
+    private Label agentNameLabel=new Label();
     @FXML
     private RadioButton rentStorageUnit;
     @FXML
@@ -46,5 +52,10 @@ public class AgentController {
         newWin.setScene(newScene);
         newWin.show();
 
+    }
+
+    public void fetchAgentFromLogInForm(StorageUnitAgent agent) {
+        this.agent=agent;
+        agentNameLabel.setText(agent.getUser_Name());
     }
 }

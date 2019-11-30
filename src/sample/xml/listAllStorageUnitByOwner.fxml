@@ -38,6 +38,6 @@
             <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER" />
          </right>
         </BorderPane>
-        <Button layoutX="511.0" layoutY="407.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="64.0" text="Cancel" />
+        <Button fx:id="cancelButton" layoutX="511.0" layoutY="407.0" mnemonicParsing="false" onAction="#closeButtonClicked" prefHeight="5.0" prefWidth="64.0" text="Cancel" />
     </children>
 </AnchorPane>

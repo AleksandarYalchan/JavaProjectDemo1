@@ -72,7 +72,7 @@ public class LogInAsOwnerController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../xml/owner.fxml"));
             Parent logInParent = loader.load();
             OwnerController ownerController = loader.<OwnerController>getController();
-            ownerController.fetchOwnerFromLogInForum(owner,id_owner);
+            ownerController.fetchOwnerFromLogInForum(owner);
 
 
             Scene newScene = new Scene(logInParent);
